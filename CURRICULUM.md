@@ -166,9 +166,37 @@ idea shows up in AI.
 | 21 | Updating beliefs | Lady Mabel's haunted castle: gut feeling about a creak, count the 27 creaky nights (only ⅓ ghosts), a second clue (a chill) lifts it to 80%, base rates (rare things stay rare), a Bayes junk-mail sorter | ✅ |
 | 22 | Next-word dice | Tale-o-Tron the story machine: spin a weighted wheel for the next word, learn chances by counting a library, write stories by dice, the temperature dial, scores squeezed into chances (softmax) — the whole chatbot recipe | ✅ |
 
+## Course 3 · Machine Learning (6 chapters, 19 lessons)
+
+How real apps learn from data, for a complete beginner (a Class 10 student should follow every step). From here on,
+worlds are **real, everyday situations with believable data**: an inbox, a phone shop, a pizza app, exam marks, rents.
+Every lesson stands alone, so it works when someone lands on it from search.
+
+### Chapter 1 · What is Machine Learning? — lessons 1–3 ✅
+
+| # | Lesson | World | Status |
+|---|---|---|---|
+| 1 | Rules vs examples | Riya's (Class 10) school inbox: sort six emails by eye, write spam rules by hand (the best mix still gets 7/10 because the Principal says FREE and the school trip costs ₹), a filter learns word clues from 200 marked emails and gets the Principal's email right, accuracy climbs from 61% to 98% with more examples, rules or learning for six everyday jobs | ✅ |
+| 2 | Data: features and labels | Arjun's second-hand phone shop: phones become table rows, find the label in four real projects (price, rain tomorrow, board marks, rent), turn words into numbers (yes/no → 1/0, ordered → ordered, colours → one yes/no column each), plot five features against price (age and battery help, colour and day don't), find four typos and a duplicate (garbage in, garbage out) | ✅ |
+| 3 | How a machine learns | Slice Express pizza app: guess a 4.5 km delivery from ten past orders, a model = prep time + minutes per km × distance (two dials), red error lines and the average miss, the computer turns the dials itself (guess → check → adjust, with a learning curve), test on new orders where a rainy Friday night is 18 min late | ✅ |
+
+### Chapter 2 · Predicting Numbers — lessons 4–7 ⬜
+Study hours → exam marks · how wrong is the line (errors, squared errors) · the line fits itself (gradient descent) · many clues at once (rent from size, rooms, distance)
+
+### Chapter 3 · Sorting into Groups — lessons 8–11 ⬜
+Pass or fail from hours · how sure is the model (0 to 1) · two clues and a dividing line · decision trees
+
+### Chapter 4 · Is the Model Any Good? — lessons 12–14 ⬜
+Practice paper vs real exam (train/test) · memorising vs understanding (overfitting) · when accuracy lies (a rare-disease test)
+
+### Chapter 5 · Patterns Without Answers — lessons 15–17 ⬜
+T-shirt sizes from height and weight (clustering) · people who liked this… (recommendations) · catching card fraud (odd one out)
+
+### Chapter 6 · Project & Responsibility — lessons 18–19 ⬜
+Build a model end to end · fair and responsible AI
+
 ## Future courses ⬜ (shown as "coming soon")
 
 - **How Computers Work** — binary, logic gates, memory, the CPU, the internet
-- **Machine Learning** — what learning is, line of best fit, gradient descent, classification, overfitting
 - **Neural Networks** — a single neuron, weights & bias, layers, backpropagation, seeing images
 - **Generative AI & LLMs** — tokens, embeddings, attention, transformers, generating text

@@ -119,6 +119,15 @@ Math lessons use `PL.plane({x, y, unit, cls, onTap, hover})` (in `widgets.js`) f
 `PL.vec([3, −2])`. Plane themes so far: `space` (dark), `sky`, `sea`, `ocean`, `cafe`, `park`, `lab`. For graphs use
 `step: [sx, sy]` (value of one grid square), `snap` (what taps round to), `titles: {x, y}` and `plot(fn, {color})`.
 
+Machine Learning lessons (from 2026-10) use **real, everyday worlds with believable data** that a Class 10 student
+recognises, instead of fantasy:
+
+| Concept | World |
+|---|---|
+| Rules vs learning from examples, training data, accuracy | Riya's school inbox: hand-written spam rules vs a filter that learns word clues from 200 marked emails |
+| Rows, features, labels, encoding, useful features, data cleaning | Arjun's second-hand phone shop: phones → table rows, ₹ prices, typos and a duplicate |
+| Model with parameters, error, training loop, testing on new data | Slice Express pizza app: prep time + minutes per km, red error lines, a learning curve, a rainy Friday order |
+
 ### Seeds for future courses
 
 - **ML / AI:** a neuron = a committee voting with different volume knobs (weights) · bias = a thumb on the scale ·

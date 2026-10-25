@@ -110,7 +110,9 @@
         const ts = tokens(text, raw);
         if (!ts.length) return;
         raw.forEach((w, i) => { if (isWord(w) && w.length >= 4) words.set(w, ts[i]); });
-        (phrases[di][field] = phrases[di][field] || []).push({ str: ' ' + ts.join(' ') + ' ', step });
+        // Phrases skip small words, as queries do: "train a model" matches "training model".
+        const content = ts.filter((t, i) => !STOP.has(raw[i]) && !STOP.has(t));
+        (phrases[di][field] = phrases[di][field] || []).push({ str: ' ' + (content.length ? content : ts).join(' ') + ' ', step });
         new Set(ts).forEach((t) => {
           if (!vocab.has(t)) vocab.set(t, []);
           vocab.get(t).push([di, field, step]);

@@ -41,13 +41,13 @@ const TOP = [
   ['sigmoid', 'curves'], ['relu', 'curves'], ['line of best fit', 'lines'], ['linear regression', 'lines'],
   ['slope', 'slope'], ['derivative', 'zoom'], ['gradient descent', 'descent'], ['learning rate', 'descent'], ['how ai learns', 'descent'],
   ['weighted sum', 'weighted'], ['neuron', 'weighted'], ['bias', 'weighted'], ['matrix', 'matrix'], ['matrix multiplication', 'matrix'], ['determinant', 'transform'],
-  ['probability', 'chance'], ['standard deviation', 'spread'], ['bell curve', 'spread'], ['bayes', 'bayes'], ['recursoin', 'recur'], ['dictonary', 'dicts'], ['probabilty', 'chance'], ['spam filter', 'bayes'],
-  ['softmax', 'nextword'], ['chatgpt', 'nextword'], ['temperature', 'nextword'],
+  ['probability', 'chance'], ['standard deviation', 'spread'], ['bell curve', 'spread'], ['bayes theorem', 'bayes'], ['recursoin', 'recur'], ['dictonary', 'dicts'], ['probabilty', 'chance'], ['spam filter', 'bayes'],
+  ['softmax', 'nextword'], ['what is machine learning', 'mlrules'], ['features and labels', 'mldata'], ['data cleaning', 'mldata'], ['training a model', 'mlloop'], ['chatgpt', 'nextword'], ['temperature', 'nextword'],
 ];
 // [query, lesson that must appear somewhere in the results]
 const ANY = [
   ['variables', 'scope'], ['machine learning', 'learner'], ['machine learning', 'descent'], ['neural network', 'matrix'],
-  ['random', 'chance'], ['sorted', 'listwork'],
+  ['random', 'chance'], ['spam filter', 'mlrules'], ['sorted', 'listwork'],
 ];
 // Queries that should find nothing about the topic (and must not crash).
 const NONE = ['zzzzqqq', 'quantum chromodynamics'];
@@ -73,8 +73,8 @@ for (const [q, want] of GROUPS) {
   const r = engine.search(q);
   if (!r.groups.some((g) => g.title === want)) { fail++; console.log(`✗ "${q}" should offer ${want}   [${r.groups.map((g) => g.title).join(', ')}]`); }
 }
-const sn = engine.search('gradient descent');
-if (!sn.soon.length) { fail++; console.log('✗ "gradient descent" should mention the coming-soon ML topic'); }
+const sn = engine.search('decision trees');
+if (!sn.soon.length) { fail++; console.log('✗ "decision trees" should mention the coming-soon ML lesson'); }
 
 const t0 = Date.now();
 for (let i = 0; i < 200; i++) engine.search(['var', 'recursi', 'gradient des', 'probabilty', 'matrix multip'][i % 5]);

@@ -381,6 +381,26 @@
       <rect x="4" y="4" width="56" height="56" rx="12" fill="#FFE4E6"/>
       <path d="M32 34 L32 10 A24 24 0 0 1 54 40 Z" fill="#BE123C"/><path d="M32 34 L54 40 A24 24 0 0 1 20 55 Z" fill="#F59E0B"/><path d="M32 34 L20 55 A24 24 0 0 1 32 10 Z" fill="#0EA5E9"/>
       <path d="M27 4 H37 L32 13z" fill="#1E293B"/><circle cx="32" cy="34" r="4" fill="#fff"/></svg>`,
+    mlrules: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="6" y="14" width="40" height="30" rx="5" fill="#1D4ED8"/>
+      <path d="M8 17 L26 31 L44 17" stroke="#BFDBFE" stroke-width="3" fill="none" stroke-linejoin="round"/>
+      <rect x="14" y="24" width="40" height="30" rx="5" fill="#fff" stroke="#93C5FD" stroke-width="2.5"/>
+      <path d="M20 32 h20 M20 39 h26 M20 46 h14" stroke="#BFDBFE" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="47" cy="44" r="11" fill="#fff" stroke="#DC2626" stroke-width="3.5"/>
+      <path d="M39.5 51.5 L54.5 36.5" stroke="#DC2626" stroke-width="3.5" stroke-linecap="round"/></svg>`,
+    mldata: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="6" y="10" width="40" height="44" rx="6" fill="#fff" stroke="#5EEAD4" stroke-width="2.5"/>
+      <rect x="6" y="10" width="40" height="10" rx="6" fill="#0F766E"/><rect x="6" y="16" width="40" height="4" fill="#0F766E"/>
+      <path d="M6 31 H46 M6 42 H46 M20 20 V54 M33 20 V54" stroke="#99F6E4" stroke-width="2"/>
+      <rect x="36" y="22" width="22" height="36" rx="5" fill="#134E4A"/><rect x="39" y="26" width="16" height="25" rx="2" fill="#CCFBF1"/>
+      <circle cx="47" cy="54.5" r="1.8" fill="#5EEAD4"/>
+      <path d="M43 40 l3 3 6 -7" stroke="#0F766E" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    mlloop: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M8 14 L40 22 L18 54 Z" fill="#FDE68A" stroke="#D97706" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M8 14 L40 22" stroke="#B45309" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="21" cy="27" r="3.5" fill="#DC2626"/><circle cx="25" cy="38" r="3.5" fill="#DC2626"/><circle cx="17" cy="40" r="2.6" fill="#16A34A"/>
+      <circle cx="44" cy="42" r="15" fill="#fff" stroke="#B91C1C" stroke-width="3.5"/>
+      <path d="M44 33 V42 L50 46" stroke="#991B1B" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     thinking: `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="27" cy="27" r="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="5"/><path d="M39 39 L54 54" stroke="#0284C7" stroke-width="7" stroke-linecap="round"/><ellipse cx="27" cy="29" rx="5" ry="6.5" fill="#0F172A"/><path d="M22 24 l-4 -3 M32 24 l4 -3 M21 30 h-5 M33 30 h5 M22 35 l-4 3 M32 35 l4 3" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/></svg>`,
     recursion: `<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="12" fill="#CCFBF1"/><rect x="14" y="14" width="36" height="36" rx="9" fill="#5EEAD4"/><rect x="21" y="21" width="22" height="22" rx="6" fill="#14B8A6"/><rect x="27" y="27" width="10" height="10" rx="3" fill="#0F766E"/></svg>`,
     organizing: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 20 V14 h16 v6" stroke="#475569" stroke-width="4" fill="none" stroke-linejoin="round"/><rect x="8" y="20" width="48" height="32" rx="7" fill="#64748B"/><rect x="8" y="30" width="48" height="5" fill="#475569"/><rect x="27" y="27" width="10" height="11" rx="2" fill="#FBBF24"/></svg>`,
@@ -923,16 +943,88 @@
       ],
     },
     {
+      id: 'ml',
+      title: 'Machine Learning',
+      tagline: 'Teach computers to learn from examples',
+      desc: 'How apps learn to filter spam, price things, predict delivery times and recommend videos. Real situations, real-looking data, and every idea built step by step from zero, no maths beyond a straight line.',
+      topics: ['What is learning?', 'Line of best fit', 'Gradient descent', 'Classification', 'Overfitting'],
+      color: '#16A34A', soft: '#DCFCE7',
+      status: 'live',
+      chapters: [
+        {
+          num: 1, title: 'What is Machine Learning?', art: 'mlrules',
+          tagline: 'Learning from examples instead of writing rules, and the data it learns from.',
+          lessons: [
+            live('mlrules', 'ml01-rules.js', {
+              title: 'Rules vs examples', tagline: 'Riya\'s inbox learns to spot spam',
+              topics: ['Spam or not?', 'Writing rules by hand', 'Learning from examples', 'More data, better guesses', 'Where ML is used'],
+              color: '#1D4ED8', soft: '#DBEAFE', dark: '#1E40AF', minutes: 10, steps: 6,
+            }),
+            live('mldata', 'ml02-data.js', {
+              title: 'Data: features and labels', tagline: 'Pricing second-hand phones at Arjun\'s shop',
+              topics: ['Rows and columns', 'Features and the label', 'Turning words into numbers', 'Useful vs useless features', 'Cleaning messy data'],
+              color: '#0F766E', soft: '#CCFBF1', dark: '#115E59', minutes: 10, steps: 6,
+            }),
+            live('mlloop', 'ml03-learning.js', {
+              title: 'How a machine learns', tagline: 'A pizza app learns to predict delivery time',
+              topics: ['A model is a recipe with dials', 'Measuring the error', 'Guess, check, adjust', 'Testing on new orders'],
+              color: '#B91C1C', soft: '#FEE2E2', dark: '#991B1B', minutes: 11, steps: 6,
+            }),
+          ],
+        },
+        {
+          num: 2, title: 'Predicting Numbers', art: 'mlrules',
+          tagline: 'Draw the best line through real data, then let the computer find it.',
+          lessons: [
+            soon('Study hours and exam marks', 'Predict a score from one clue'),
+            soon('How wrong is the line?', 'Errors, squared errors and the average miss'),
+            soon('The line fits itself', 'Gradient descent trains a real model'),
+            soon('Many clues at once', 'House rent from size, rooms and distance'),
+          ],
+        },
+        {
+          num: 3, title: 'Sorting into Groups', art: 'mlrules',
+          tagline: 'Yes or no, cat or dog: models that pick a category.',
+          lessons: [
+            soon('Yes or no?', 'Pass or fail from hours studied'),
+            soon('How sure is the model?', 'Chances between 0 and 1'),
+            soon('Drawing the boundary', 'Two clues and a dividing line'),
+            soon('Decision trees', 'Twenty questions that decide'),
+          ],
+        },
+        {
+          num: 4, title: 'Is the Model Any Good?', art: 'mlrules',
+          tagline: 'Testing fairly, and the trap of memorising.',
+          lessons: [
+            soon('Practice paper vs real exam', 'Training data and test data'),
+            soon('Memorising vs understanding', 'Overfitting and underfitting'),
+            soon('When accuracy lies', 'A rare-disease test and false alarms'),
+          ],
+        },
+        {
+          num: 5, title: 'Patterns Without Answers', art: 'mlrules',
+          tagline: 'Finding groups and similarities when nobody gives the labels.',
+          lessons: [
+            soon('Grouping customers', 'T-shirt sizes from height and weight'),
+            soon('People who liked this…', 'How recommendations work'),
+            soon('Spotting the odd one out', 'Catching card fraud'),
+          ],
+        },
+        {
+          num: 6, title: 'Project & Responsibility', art: 'mlrules',
+          tagline: 'Build a model from start to finish, and use it fairly.',
+          lessons: [
+            soon('Build a model end to end', 'From raw data to predictions'),
+            soon('Fair and responsible AI', 'When data carries old mistakes'),
+          ],
+        },
+      ],
+    },
+    {
       id: 'computers', status: 'soon', title: 'How Computers Work',
       tagline: 'From light switches to the internet',
       topics: ['Binary', 'Logic gates', 'Memory', 'The CPU', 'The internet'],
       color: '#475569', soft: '#F1F5F9',
-    },
-    {
-      id: 'ml', status: 'soon', title: 'Machine Learning',
-      tagline: 'Teach computers to learn from examples',
-      topics: ['What is learning?', 'Line of best fit', 'Gradient descent', 'Classification', 'Overfitting'],
-      color: '#16A34A', soft: '#DCFCE7',
     },
     {
       id: 'nn', status: 'soon', title: 'Neural Networks',

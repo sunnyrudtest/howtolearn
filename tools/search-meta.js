@@ -102,6 +102,11 @@ module.exports = {
     spread: ['average', 'mean', 'spread', 'variance', 'standard deviation', 'histogram', 'bell curve', 'normal distribution', 'distribution', 'statistics'],
     bayes: ['bayes', 'bayes theorem', 'bayesian', 'conditional probability', 'base rate', 'evidence', 'update', 'spam filter', 'naive bayes'],
     nextword: ['language model', 'llm', 'chatgpt', 'chatbot', 'next word prediction', 'text generation', 'temperature', 'softmax', 'bigram', 'generative ai', 'tokens'],
+
+    // ---- Machine Learning · What is Machine Learning?
+    mlrules: ['machine learning', 'what is machine learning', 'ml', 'ai', 'artificial intelligence', 'spam', 'spam filter', 'email', 'rules', 'learning from examples', 'training data', 'examples', 'accuracy', 'more data', 'phishing'],
+    mldata: ['data', 'dataset', 'features', 'feature', 'label', 'labels', 'target', 'rows and columns', 'table', 'encoding', 'one hot', 'categorical data', 'data cleaning', 'missing values', 'outliers', 'garbage in garbage out', 'price prediction'],
+    mlloop: ['model', 'training', 'train a model', 'parameters', 'weights', 'error', 'loss', 'average error', 'mean absolute error', 'learning loop', 'guess check adjust', 'prediction', 'predict', 'test data', 'generalisation', 'delivery time'],
   },
 
   related: [
@@ -158,5 +163,14 @@ module.exports = {
     ['bigvectors', 'cosine'],
     ['cosine', 'nextword'],
     ['chance', 'nextword'],
+    // Machine Learning ↔ the rest
+    ['mlrules', 'bayes'],
+    ['mlrules', 'learner'],
+    ['mldata', 'pandas'],
+    ['mldata', 'bigvectors'],
+    ['mldata', 'capstone'],
+    ['mlloop', 'lines'],
+    ['mlloop', 'descent'],
+    ['mlloop', 'potions'],
   ],
 };

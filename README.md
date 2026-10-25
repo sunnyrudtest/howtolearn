@@ -8,7 +8,9 @@ No build step and no dependencies — plain HTML, CSS and JavaScript.
 The first course is **Python Programming** (12 chapters, 50 lessons; all live).
 The second is **Math for AI** (6 chapters, 22 lessons; all live). Its lessons share the
 `PL.plane` coordinate-grid widget in `js/widgets.js` and live in `js/lessons/m*.js`.
-Machine Learning, Neural Networks, Generative AI and How Computers Work are shown as coming soon.
+The third is **Machine Learning** (6 chapters, 19 lessons; chapter 1 live), built from real everyday situations
+and believable data, in `js/lessons/ml*.js`.
+Neural Networks, Generative AI and How Computers Work are shown as coming soon.
 See [CURRICULUM.md](CURRICULUM.md) for the full plan.
 
 ## Run it
