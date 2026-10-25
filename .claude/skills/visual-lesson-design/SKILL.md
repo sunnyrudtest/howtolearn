@@ -209,6 +209,13 @@ Rules for every step:
 3. Add lesson-specific CSS to `css/main.css` (grouped under a comment with the lesson name) and add the
    new grid classes to the `@media (max-width: 760px)` single-column rule.
 4. Add an icon to `PL.art` in `courses.js` (64×64 SVG) keyed by the lesson id.
+5. **Make it searchable:** add the lesson's `keywords` (everyday words, jargon and other names a learner might
+   type) to `tools/search-meta.js`, plus any `related` lessons in other chapters or courses. Then run
+   `node tools/build-search-index.js` (it refuses to build if a lesson has no keywords) and
+   `node tools/test-search.js`.
+
+Write every lesson so it **stands alone**: learners can land on any lesson, or any step, straight from search.
+If a step leans on an earlier lesson's world, add a one-line reminder of what it was.
 
 ### The step API
 
@@ -252,6 +259,7 @@ and the side-by-side `.chef-layout` / `.logic-layout` (visual left, controls rig
 - [ ] Bold never wraps inline code (`**text `code`**` doesn't render — reword it).
 - [ ] Toggles/buttons can't break an animation that's running (guard with a `busy` flag).
 - [ ] Recap bullets match what the steps actually taught; `steps` count in `courses.js` matches.
+- [ ] Search finds it: keywords added, `js/search-index.js` rebuilt, `node tools/test-search.js` passes.
 - [ ] Read every intro aloud: would a 10-year-old and a 70-year-old both get it?
 - [ ] New lesson CSS classes don't collide with existing ones (`grep` first: a stray `.sh` once zeroed a bar's width).
 - [ ] Tested in the browser pane while it is hidden? `requestAnimationFrame` pauses there, so tweens never finish:

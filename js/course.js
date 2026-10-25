@@ -62,7 +62,7 @@
 
   let cleanups = [];
   PL.coursePage = {
-    render(courseId) {
+    render(courseId, chapterNum) {
       this.destroy();
       const course = PL.course(courseId);
       if (!course || course.status !== 'live') { location.replace('#/'); return; }
@@ -113,6 +113,9 @@
 
       root.replaceChildren(h('div', { class: 'home' }, nav, h('main', { id: 'main' }, header, body), PL.ui.footer(() => PL.coursePage.render(courseId))));
       window.scrollTo(0, 0);
+      const target = chapterNum && document.getElementById('ch-' + chapterNum);
+      // Instant, not smooth: a long smooth scroll from the top feels slow and can be interrupted.
+      if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 84, behavior: 'instant' });
       if (resume) PL.prefetchLesson(resume.id);
     },
     destroy() {

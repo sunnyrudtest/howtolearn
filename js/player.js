@@ -87,7 +87,9 @@
       const segs = lesson.steps.map(() => h('i'));
       const xpVal = h('span', null, String(PL.progress.xp()));
       const xpPill = h('div', { class: 'stat-pill xp', title: 'Experience points', html: icons.bolt }, xpVal);
-      const closeBtn = PL.btn('', { icon: icons.close, variant: 'ghost', aria: 'Back to course', onClick: () => { location.hash = courseHref; } });
+      // Opened from search? Closing goes back to those results instead of the course page.
+      const backHref = PL.returnTo || courseHref;
+      const closeBtn = PL.btn('', { icon: icons.close, variant: 'ghost', aria: PL.returnTo ? 'Back to search' : 'Back to course', onClick: () => { location.hash = backHref; } });
       const top = h('header', { class: 'ptop' }, h('div', { class: 'ptop-inner' },
         closeBtn, h('div', { class: 'ptitle' }, lesson.title), h('div', { class: 'pbar', role: 'progressbar', 'aria-label': 'Lesson progress' }, segs), xpPill));
       const stage = h('main', { class: 'stage', id: 'main' });

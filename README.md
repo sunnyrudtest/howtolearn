@@ -32,9 +32,30 @@ js/ui.js                shared page shell: nav, footer, progress ring/bar
 js/home.js              #/            course catalog
 js/course.js            #/course/<id> chapters and lessons of one course
 js/player.js            #/lesson/<id>/<step>  lesson player (split layout, gating, XP, finish screen)
+js/search.js            #/search      search engine (ranking, typos, highlighting) and the search page
+js/search-index.js      GENERATED: every lesson's step text + keywords, loaded when search opens
 js/app.js               hash router
 js/lessons/*.js         one file per lesson, fetched only when that lesson is opened
 .claude/skills/visual-lesson-design/SKILL.md   how lessons are designed (worlds, arc, visuals, checklist)
+tools/search-meta.js    keywords and related-lesson links for search (hand-written)
+tools/build-search-index.js   builds js/search-index.js from the lessons + search-meta.js
+tools/test-search.js    checks search finds the right lesson for ~110 real queries
+```
+
+## Search
+
+Press `/` (or Ctrl+K) anywhere outside a lesson, or use the box on the home page. Search looks through every
+lesson's title, tagline, topics and keywords, and the title and text of every step, so a result can link
+straight to one step. It handles plurals ("variables" finds "variable"), typos ("recursoin"), US/UK spelling
+("neighbor") and partial words while you type. Results show the best match with all its steps, the previous
+and next lesson, related lessons in other courses, whole chapters that match, and other lessons that mention
+the topic. Searches are shareable links: `#/search?q=gradient+descent`.
+
+After adding or changing a lesson, rebuild the index and run the checks:
+
+```bash
+node tools/build-search-index.js
+node tools/test-search.js
 ```
 
 ## Adding a lesson
@@ -43,7 +64,8 @@ js/lessons/*.js         one file per lesson, fetched only when that lesson is op
    (or replace a `soon(...)` stub).
 2. Create `js/lessons/NN-file.js` calling `PL.registerLesson({ id, outro, recap, steps: [...] })`.
    Each step is `{ title, intro, hint, render(el, api) }`; call `api.complete()` when the learner has finished the interaction.
-3. Follow the checklist in `.claude/skills/visual-lesson-design/SKILL.md` (fits the screen, works on a phone, no console errors).
+3. Add its keywords to `tools/search-meta.js`, then run `node tools/build-search-index.js` and `node tools/test-search.js`.
+4. Follow the checklist in `.claude/skills/visual-lesson-design/SKILL.md` (fits the screen, works on a phone, no console errors).
 
 ## Adding a course
 

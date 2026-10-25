@@ -13,6 +13,8 @@
     <path d="M28 16 V25 L20 29 V20 Z" fill="#818CF8"/>
     <circle cx="29.5" cy="11" r="3" fill="#F472B6"/></svg>`;
 
+  const SEARCH_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
+
   const scrollToId = (id) => (e) => {
     const t = document.getElementById(id);
     if (!t) return;
@@ -21,14 +23,22 @@
   };
 
   PL.ui = {
-    /** links: [{ label, href } | { label, target }] — `target` scrolls to an element id on this page. */
-    nav(links, cleanups) {
+    searchIcon: SEARCH_ICON,
+    /** links: [{ label, href } | { label, target }] — `target` scrolls to an element id on this page.
+        o.searchActive marks the search button as the current page. */
+    nav(links, cleanups, o = {}) {
       const xpPill = h('div', { class: 'stat-pill xp', title: 'Experience points', html: icons.bolt }, h('span', null, String(PL.progress.xp())));
       const streak = h('div', { class: 'stat-pill streak', title: 'Day streak', html: icons.flame }, h('span', null, String(PL.progress.streak())));
       const nav = h('header', { class: 'nav' }, h('div', { class: 'nav-inner' },
         h('a', { class: 'brand', href: '#/', html: LOGO + '<span>HowTo<b>Learn</b></span>' }),
         h('nav', { class: 'nav-links', 'aria-label': 'Main' }, (links || []).map((l) =>
           h('a', { href: l.href || '#' + l.target, onClick: l.target ? scrollToId(l.target) : null }, l.label))),
+        h('a', {
+          class: 'nav-search' + (o.searchActive ? ' on' : ''), href: '#/search', 'aria-label': 'Search lessons',
+          'aria-current': o.searchActive ? 'page' : null, title: 'Search lessons (press /)',
+          onMouseenter: () => PL.searchPage && PL.searchPage.prefetch(), onFocus: () => PL.searchPage && PL.searchPage.prefetch(),
+          onClick: (e) => { if (o.searchActive) { e.preventDefault(); const i = document.getElementById('sr-input'); if (i) { i.focus(); i.select(); } } },
+          html: SEARCH_ICON + '<span class="ns-lbl">Search</span><kbd>/</kbd>' }),
         h('div', { class: 'nav-stats' }, streak, xpPill)));
       const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
       window.addEventListener('scroll', onScroll, { passive: true });
