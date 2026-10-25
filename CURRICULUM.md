@@ -139,14 +139,14 @@ idea shows up in AI.
 | 9 | Straight lines | Skye's skate park: build a ramp with m and b, b slides the line to collect coins, m's staircase (uphill/flat/downhill), a rail through two posts (m = up ÷ across), the line of best fit with a total-miss meter (linear regression) | ✅ |
 | 10 | Curves that grow and squash | Dr Gloop's slime lab: +10 jar vs doubling jar, doubling on a graph (a million by day 20), the slime bowl `y = x × x` and its bottom, the squeeze tube (sigmoid, 0–1), the one-way valve (ReLU) | ✅ |
 
-### Chapter 4 · Slopes & Change — lessons 11–14 ⬜
+### Chapter 4 · Slopes & Change — lessons 11–14 ✅
 
-| # | Lesson | World |
-|---|---|---|
-| 11 | Slope | Mountain climbers compare trails: rise over run, uphill +, downhill −, flat 0 |
-| 12 | Rate of change | A race car's distance graph: the slope is the speed |
-| 13 | Zoom into a curve | A roller coaster: zoom in until the track looks straight, the slope at one point |
-| 14 | Finding the lowest point | A diver searching for the deepest point of a lake: follow the slope down, stop where it's flat (→ gradient descent) |
+| # | Lesson | World | Status |
+|---|---|---|---|
+| 11 | Slope | Billy the mountain goat: the higher trail isn't the steeper one, plant summit flags with slope exactly 2 (they all sit on one line), read trails left to right (+ uphill, 0 flat, − downhill, even when Billy walks backwards), tilt a trail from flat to a cliff (÷ 0 has no answer), measure a mountain of many slopes | ✅ |
+| 12 | Rate of change | Zip the toy race car: drive with gears and watch the distance–time graph draw itself, a speedometer hidden in the slope (far isn't fast), match a snail, dog and cheetah to their lines, a hill-shaped graph that isn't a hill (down = coming back), Steady Eddie and average speed | ✅ |
+| 13 | Zoom into a curve | Loopy Land roller coaster: a different slope at every point, zoom in with a magnifying glass until the track is straight, slide Q onto P (the tangent line / derivative), find the flat top and bottom with a touching ruler, the slopes draw their own graph | ✅ |
+| 14 | Finding the lowest point | Inky the octopus in Murky Lake: find the lost pearl in the dark, step opposite to the slope, new spot = spot − slope (gradient descent), Goldilocks step sizes (learning rate), stuck in the small dip (local minimum), riding the miss bowl to fit a line (how AI learns) | ✅ |
 
 ### Chapter 5 · Weighted Sums & Matrices — lessons 15–17 ⬜
 

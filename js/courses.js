@@ -330,6 +330,26 @@
       <path d="M8 52 C30 52 38 46 46 30 S54 8 56 6" stroke="#DB2777" stroke-width="4" fill="none" stroke-linecap="round"/>
       <path d="M8 40 Q22 64 36 40" stroke="#65A30D" stroke-width="4" fill="none" stroke-linecap="round"/>
       <circle cx="22" cy="51" r="4" fill="#84CC16" stroke="#3F6212" stroke-width="1.5"/></svg>`,
+    slope: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#E0F2FE"/>
+      <path d="M4 56 L30 14 L44 34 L52 26 L60 38 V56z" fill="#94A3B8"/><path d="M24 24 L30 14 L36 23 Q30 20 24 24z" fill="#fff"/>
+      <path d="M12 48 H24 V30" stroke="#EA580C" stroke-width="2.5" fill="none" stroke-dasharray="3 3"/>
+      <path d="M12 48 L24 30" stroke="#0369A1" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="30" r="3.5" fill="#DC2626"/></svg>`,
+    rate: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#FFE4E6"/>
+      <path d="M10 54 V10 M10 54 H56" stroke="#9F1239" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+      <path d="M12 52 L24 46 L30 46 L42 22 L54 16" stroke="#BE123C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="30" y="36" width="20" height="7" rx="3" fill="#BE123C"/><path d="M35 36 l3 -4 h6 l3 4z" fill="#BE123C"/><circle cx="35" cy="44" r="2.6" fill="#1E293B"/><circle cx="45" cy="44" r="2.6" fill="#1E293B"/></svg>`,
+    zoom: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#EDE9FE"/>
+      <path d="M6 46 C16 46 18 16 30 16 S44 50 58 44" stroke="#6D28D9" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="24" cy="24" r="11" fill="#fff" fill-opacity=".6" stroke="#DB2777" stroke-width="3.5"/><path d="M32 32 L40 40" stroke="#DB2777" stroke-width="5" stroke-linecap="round"/>
+      <path d="M16 32 L32 16" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+    descent: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#CFFAFE"/>
+      <path d="M6 14 C16 54 48 54 58 14 V56 H6z" fill="#E7D3A8"/>
+      <path d="M12 22 L20 34 M22 38 L28 44" stroke="#0E7490" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 4"/>
+      <circle cx="32" cy="44" r="4" fill="#fff" stroke="#94A3B8" stroke-width="1.5"/><circle cx="14" cy="18" r="6" fill="#C026D3"/><circle cx="12" cy="17" r="1.4" fill="#fff"/><circle cx="16" cy="17" r="1.4" fill="#fff"/></svg>`,
     thinking: `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="27" cy="27" r="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="5"/><path d="M39 39 L54 54" stroke="#0284C7" stroke-width="7" stroke-linecap="round"/><ellipse cx="27" cy="29" rx="5" ry="6.5" fill="#0F172A"/><path d="M22 24 l-4 -3 M32 24 l4 -3 M21 30 h-5 M33 30 h5 M22 35 l-4 3 M32 35 l4 3" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/></svg>`,
     recursion: `<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="12" fill="#CCFBF1"/><rect x="14" y="14" width="36" height="36" rx="9" fill="#5EEAD4"/><rect x="21" y="21" width="22" height="22" rx="6" fill="#14B8A6"/><rect x="27" y="27" width="10" height="10" rx="3" fill="#0F766E"/></svg>`,
     organizing: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 20 V14 h16 v6" stroke="#475569" stroke-width="4" fill="none" stroke-linejoin="round"/><rect x="8" y="20" width="48" height="32" rx="7" fill="#64748B"/><rect x="8" y="30" width="48" height="5" fill="#475569"/><rect x="27" y="27" width="10" height="11" rx="2" fill="#FBBF24"/></svg>`,
@@ -795,10 +815,26 @@
           num: 4, title: 'Slopes & Change', art: 'slopes',
           tagline: 'How steep, how fast, and which way is down: the heart of learning.',
           lessons: [
-            soon('Slope', 'Mountain climbers compare trails'),
-            soon('Rate of change', 'A race car\'s speed hiding in a graph'),
-            soon('Zoom into a curve', 'A roller coaster up close'),
-            soon('Finding the lowest point', 'A diver hunts for the deepest spot'),
+            live('slope', 'm11-slope.js', {
+              title: 'Slope', tagline: 'Billy the goat compares mountain trails',
+              topics: ['Rise over run', 'Uphill +, flat 0, downhill −', 'From flat to cliff', 'A mountain of many slopes'],
+              color: '#0369A1', soft: '#E0F2FE', dark: '#075985', minutes: 9, steps: 6,
+            }),
+            live('rate', 'm12-rate.js', {
+              title: 'Rate of change', tagline: 'Zip the race car\'s speed hides in a graph',
+              topics: ['Distance–time graphs', 'Slope = speed', 'Not a picture of the road', 'Average speed'],
+              color: '#BE123C', soft: '#FFE4E6', dark: '#9F1239', minutes: 9, steps: 6,
+            }),
+            live('zoom', 'm13-zoom.js', {
+              title: 'Zoom into a curve', tagline: 'A roller coaster up close',
+              topics: ['A slope at every point', 'Zoom until it\'s straight', 'The touching line', 'Flat tops and bottoms'],
+              color: '#6D28D9', soft: '#EDE9FE', dark: '#5B21B6', minutes: 9, steps: 6,
+            }),
+            live('descent', 'm14-descent.js', {
+              title: 'Finding the lowest point', tagline: 'Inky the octopus hunts for a lost pearl',
+              topics: ['Step against the slope', 'Gradient descent', 'The learning rate', 'How AI learns'],
+              color: '#0E7490', soft: '#CFFAFE', dark: '#155E75', minutes: 11, steps: 7,
+            }),
           ],
         },
         {

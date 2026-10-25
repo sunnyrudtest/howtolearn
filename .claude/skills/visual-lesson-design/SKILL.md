@@ -101,6 +101,10 @@ A good world:
 | Graphs, reading between points | Zoomy the model rocket's flight log beside a height ruler |
 | Straight lines, slope/intercept, best fit | Skye's skate park: ramps, coins, grind rails, a total-miss meter |
 | Exponential, x², sigmoid, ReLU | Dr Gloop's slime lab: doubling jars, a slime bowl, a squeeze tube, a one-way valve |
+| Slope, rise over run, sign, ÷ 0 | Billy the mountain goat: two trails, planting summit flags, sledding downhill, tilting to a cliff |
+| Rate of change, speed, average speed | Zip the toy race car: a self-drawing distance graph, speedometer, snail/dog/cheetah, "not a picture of the road" |
+| Slope at a point, tangent, derivative | Loopy Land roller coaster: magnifying-glass zoom, sliding Q onto P, a touching ruler, the slope graph |
+| Gradient descent, learning rate, local minimum | Inky the octopus in Murky Lake: feel the slope in the dark, Goldilocks step sizes, two dips, riding the miss bowl |
 
 Math lessons use `PL.plane({x, y, unit, cls, onTap, hover})` (in `widgets.js`) for every coordinate grid: it gives
 `arrow(a, b, {color, label})`, `dot(p, {emoji|node})`, `glide(a, b, ms, fn)` and `toUnit(event)`. Write vectors as

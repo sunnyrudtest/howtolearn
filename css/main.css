@@ -4311,6 +4311,214 @@ b.zero, span.zero { color: var(--muted); }
 .gw-gtrack i { display: block; height: 100%; background: linear-gradient(90deg, #F9A8D4, #DB2777); transition: width .25s; }
 
 /* ==========================================================================
+   Math for AI · Slope (Billy the mountain goat)
+   ========================================================================== */
+.plane.mtn .pl-bg { fill: #F4FAFF; }
+.plane.mtn .pl-grid line { stroke: rgba(3, 105, 161, .09); }
+.plane.mtn .pl-grid line.axis { stroke: rgba(7, 89, 133, .4); }
+.plane.mtn .pl-tick { fill: #0369A1; }
+.plane.mtn .pl-dlabel { stroke: #F4FAFF; }
+.sl-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.sl-plot { padding: 4px; border-radius: 16px; background: #F4FAFF; border: 1.5px solid #BAE6FD; min-width: 0; }
+.sl-svg { max-height: max(240px, calc(var(--avail, 720px) - 130px)); }
+.sl-sun { fill: #FDE68A; opacity: .7; }
+.sl-far { fill: #DBEAF6; }
+.sl-snow { fill: #fff; }
+.sl-trail { stroke: #78716C; stroke-width: 6; stroke-linecap: round; }
+.sl-trail.live { stroke: #0369A1; }
+.sl-trail.ghost { stroke: #16A34A; stroke-width: 4; opacity: .4; }
+.sl-rr line, .sl-mini { stroke-width: 3; stroke-dasharray: 5 4; }
+.sl-rr line.run, .sl-mini.run { stroke: #2563EB; }
+.sl-rr line.rise, .sl-mini.rise { stroke: #EA580C; }
+.sl-rrt { font-size: 12px; font-weight: 800; paint-order: stroke; stroke: #F4FAFF; stroke-width: 4px; stroke-linejoin: round; }
+.sl-rrt.run { fill: #1D4ED8; }
+.sl-rrt.rise { fill: #C2410C; }
+.sl-goat { transform: scaleX(-1); transform-box: fill-box; transform-origin: center; font-size: 24px; }
+.sl-billy.l .sl-goat { transform: none; }
+.sl-sledg .pl-emoji:first-child { font-size: 22px; }
+.sl-flag .pl-emoji { font-size: 18px; }
+.sl-flag .pl-dlabel { fill: #075985; font-weight: 800; }
+.sl-camp circle { fill: #0369A1; stroke: #fff; stroke-width: 2.5; }
+.sl-good circle { fill: #16A34A; stroke: #fff; stroke-width: 2; }
+.sl-way { font-size: 12px; font-weight: 800; fill: #075985; }
+.sl-calc { padding: 12px 14px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); text-align: center; font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--ink-2); }
+.sl-calc b { color: var(--lc-dark); font-size: 22px; }
+.sl-calc.big b { font-size: 28px; }
+.sl-up { color: #C2410C; }
+.sl-ac { color: #1D4ED8; }
+.sl-log { display: flex; flex-direction: column; gap: 6px; }
+.sl-logrow { padding: 8px 12px; border-radius: 12px; background: var(--surface-2); font-size: 14px; animation: fbIn .35s both; }
+.sl-round { display: flex; flex-direction: column; gap: 10px; }
+.sl-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.sl-pick { min-height: 44px; padding: 8px 6px; border-radius: 12px; border: 2px solid var(--line-2); background: #fff; font: inherit; font-size: 14px; font-weight: 700; color: var(--ink-2); cursor: pointer; }
+.sl-pick:hover:not(:disabled) { border-color: var(--lc); }
+.sl-pick:disabled { cursor: default; }
+.sl-pick.right { background: #22C55E; border-color: #16A34A; color: #fff; }
+.sl-pick.wrong { background: var(--bad-soft); border-color: #FCA5A5; color: var(--bad-ink); }
+.sl-rock { fill: #CBD5E1; opacity: .8; }
+.sl-sec { cursor: pointer; outline: none; }
+.sl-sec .vis { stroke: #57534E; stroke-width: 6; stroke-linecap: round; }
+.sl-sec .hit { stroke: transparent; stroke-width: 26; stroke-linecap: round; }
+.sl-sec:hover .vis, .sl-sec:focus-visible .vis { stroke: #0284C7; }
+.sl-sec.done .vis { stroke: #0369A1; }
+.sl-sec.sel .vis { stroke: #F59E0B; }
+.sl-num circle { fill: #fff; stroke: #0369A1; stroke-width: 2; }
+.sl-num text { font-size: 11px; font-weight: 800; fill: #0369A1; }
+.sl-tag { font-family: var(--mono); font-size: 12.5px; font-weight: 800; fill: #075985; paint-order: stroke; stroke: #F4FAFF; stroke-width: 4px; stroke-linejoin: round; }
+.sl-start .pl-emoji { transform: scaleX(-1); transform-box: fill-box; transform-origin: center; }
+
+/* ==========================================================================
+   Math for AI · Rate of change (Zip the race car)
+   ========================================================================== */
+.plane.race .pl-bg { fill: #FFFAFB; }
+.plane.race .pl-grid line { stroke: rgba(190, 18, 60, .08); }
+.plane.race .pl-grid line.axis { stroke: rgba(159, 18, 57, .4); }
+.plane.race .pl-tick { fill: #BE123C; }
+.plane.race .pl-dlabel { stroke: #FFFAFB; }
+.rc-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.rc-plot { padding: 4px; border-radius: 16px; background: #FFFAFB; border: 1.5px solid #FECDD3; min-width: 0; }
+.rc-svg { max-height: max(240px, calc(var(--avail, 720px) - 130px)); }
+.rc-path { fill: none; stroke: var(--ac, #BE123C); stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+.rc-path.thin { stroke-width: 4; }
+.rc-hl { stroke: #FDA4AF; stroke-width: 14; stroke-linecap: round; opacity: .6; }
+.rc-mk circle { fill: #BE123C; stroke: #fff; stroke-width: 2.5; }
+.rc-mk.e circle { fill: #2563EB; }
+.rc-end circle { fill: #9F1239; }
+.rc-finish { stroke: #1E293B; stroke-width: 2; stroke-dasharray: 3 3; }
+.rc-flagt { font-size: 11px; font-weight: 800; fill: #1E293B; }
+.pl-plot.rc-eddie { stroke: #2563EB; stroke-width: 3.5; stroke-dasharray: 8 5; }
+.rc-lname { font-size: 12px; font-weight: 800; paint-order: stroke; stroke: #FFFAFB; stroke-width: 4px; }
+.rc-tag { font-family: var(--mono); font-size: 12.5px; font-weight: 800; fill: #9F1239; paint-order: stroke; stroke: #FFFAFB; stroke-width: 4px; stroke-linejoin: round; }
+.rc-track { display: block; width: 100%; height: auto; max-height: 120px; }
+.rc-track .grass { fill: #DCFCE7; }
+.rc-track .road { fill: #475569; }
+.rc-track .mid { stroke: #fff; stroke-width: 2; stroke-dasharray: 10 8; opacity: .7; }
+.rc-track .start { stroke: #fff; stroke-width: 3; }
+.rc-track .chk { fill: #fff; }
+.rc-track .chk.b { fill: #111827; }
+.rc-track .tick { font-family: var(--mono); font-size: 12.5px; font-weight: 700; fill: #166534; }
+.rc-car-in { transform-box: fill-box; transform-origin: center; transition: transform .2s; }
+.rc-car-in.back { transform: scaleX(-1); }
+.rc-car .win { fill: #E0F2FE; }
+.rc-car .wheel { fill: #111827; stroke: #CBD5E1; stroke-width: 1.5; }
+.rc-car .num { font-family: var(--mono); font-size: 8px; font-weight: 800; fill: #fff; }
+.rc-car-in.back .num { display: none; }
+.rc-runner { font-size: 20px; }
+.rc-read { padding: 10px 14px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--ink-2); }
+.rc-read b { color: var(--lc-dark); }
+.row > .rc-read { flex: 1 1 180px; }
+.rc-speed { display: grid; grid-template-columns: minmax(0, 170px) minmax(0, 1fr); gap: 12px; align-items: center; }
+.rc-gauge { width: 100%; height: auto; display: block; }
+.rc-gauge .arc { fill: none; stroke: #FECDD3; stroke-width: 12; stroke-linecap: round; }
+.rc-gauge .tk { stroke: #9F1239; stroke-width: 2; }
+.rc-gauge .tkt { font-family: var(--mono); font-size: 10px; font-weight: 700; fill: #9F1239; }
+.rc-gauge .needle { stroke: #BE123C; stroke-width: 4; stroke-linecap: round; transition: all .25s; }
+.rc-gauge .hub { fill: #9F1239; }
+.rc-rows { display: flex; flex-direction: column; gap: 10px; }
+.rc-row { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; align-items: center; }
+.rc-sw { font-weight: 800; color: var(--c); padding-left: 18px; position: relative; }
+.rc-sw::before { content: ''; position: absolute; left: 0; top: 50%; width: 12px; height: 5px; border-radius: 3px; background: var(--c); transform: translateY(-50%); }
+.rc-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rc-pick { min-height: 46px; border-radius: 12px; border: 2px solid var(--line-2); background: #fff; font-size: 24px; cursor: pointer; }
+.rc-pick:hover:not(:disabled) { border-color: var(--lc); }
+.rc-pick:disabled { cursor: default; }
+.rc-pick.right { background: #DCFCE7; border-color: #16A34A; }
+.rc-pick.wrong { background: var(--bad-soft); border-color: #FCA5A5; opacity: .6; }
+
+/* ==========================================================================
+   Math for AI · Zoom into a curve (Loopy Land roller coaster)
+   ========================================================================== */
+.plane.fair .pl-bg { fill: #FBF8FF; }
+.plane.fair .pl-grid line { stroke: rgba(109, 40, 217, .08); }
+.plane.fair .pl-grid line.axis { stroke: rgba(91, 33, 182, .38); }
+.plane.fair .pl-tick { fill: #7C3AED; }
+.plane.fair .pl-dlabel { stroke: #FBF8FF; }
+.zc-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.zc-plot { padding: 4px; border-radius: 16px; background: #FBF8FF; border: 1.5px solid #DDD6FE; min-width: 0; }
+.zc-svg { max-height: max(240px, calc(var(--avail, 720px) - 130px)); }
+.zc-sup line { stroke: #C4B5FD; stroke-width: 2; }
+.pl-plot.zc-ties { stroke: #A16207; stroke-width: 11; stroke-dasharray: 2.5 7; stroke-linecap: butt; opacity: .55; }
+.pl-plot.zc-rail { stroke: #6D28D9; stroke-width: 5; }
+.zc-cart .arm { fill: none; stroke: #1E293B; stroke-width: 2.5; stroke-linecap: round; }
+.zc-cart .head { fill: #FCD9B6; stroke: #92400E; stroke-width: 1.5; }
+.zc-cart .body { fill: #DB2777; stroke: #9D174D; stroke-width: 1.5; stroke-linejoin: round; }
+.zc-cart .wheel { fill: #1E293B; }
+.zc-mag { fill: rgba(219, 39, 119, .08); stroke: #DB2777; stroke-width: 2.5; }
+.zc-p circle { fill: #1E293B; stroke: #fff; stroke-width: 2.5; }
+.zc-q circle { fill: #DB2777; stroke: #fff; stroke-width: 2.5; }
+.zc-p .pl-dlabel, .zc-q .pl-dlabel { font-family: var(--mono); font-weight: 800; font-size: 13px; }
+.zc-zwrap { display: flex; justify-content: center; }
+.zc-zoom { width: min(100%, clamp(130px, calc(var(--avail, 720px) - 420px), 220px)); height: auto; border-radius: 50%; border: 5px solid #DB2777; box-shadow: 0 8px 20px -12px rgba(219, 39, 119, .6); }
+.zc-zbg { fill: #FBF8FF; }
+.zc-zcurve { fill: none; stroke: #6D28D9; stroke-width: 6; stroke-linecap: round; }
+.zc-zruler { stroke: #F59E0B; stroke-width: 2; stroke-dasharray: 6 5; }
+.zc-zp { fill: #1E293B; stroke: #fff; stroke-width: 2.5; }
+.zc-zl { font-family: var(--mono); font-size: 18px; font-weight: 800; fill: #DB2777; }
+.zc-meter { display: grid; grid-template-columns: auto minmax(0, 1fr) 46px; gap: 8px; align-items: center; font-size: 13px; font-weight: 700; color: var(--muted); }
+.zc-mtrack { height: 16px; border-radius: 8px; background: var(--surface-2); border: 1.5px solid var(--line); overflow: hidden; }
+.zc-mtrack i { display: block; height: 100%; background: #DB2777; transition: width .25s; }
+.zc-mtrack i.ok { background: #16A34A; }
+.zc-meter b { font-family: var(--mono); color: var(--ink); text-align: right; }
+.pl-plot.zc-secant { stroke: #DB2777; stroke-width: 3; }
+.zc-tri { fill: none; stroke: #F59E0B; stroke-width: 2.5; stroke-dasharray: 5 4; }
+.zc-read { padding: 10px 14px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); font-family: var(--mono); font-size: 17px; font-weight: 600; color: var(--ink-2); text-align: center; }
+.zc-read b { color: var(--lc-dark); font-size: 20px; }
+.zc-read.big b { font-size: 26px; }
+.zc-up { color: #C2410C; }
+.zc-ac { color: #1D4ED8; }
+.zc-hist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 12px; padding: 8px 12px; border-radius: 14px; background: var(--surface-2); font-family: var(--mono); font-size: 14px; }
+.zc-hist .hd, .zc-hist .row-h { display: contents; }
+.zc-hist .hd span { font-family: var(--font); font-size: 12px; font-weight: 800; color: var(--muted); }
+.zc-hist .row-h > * { padding: 1px 0; }
+.zc-hist .row-h.cur > * { color: #DB2777; font-weight: 800; }
+.zc-ruler { stroke: #F59E0B; stroke-width: 6; stroke-linecap: round; opacity: .9; }
+.zc-pin circle { fill: #16A34A; stroke: #fff; stroke-width: 2.5; }
+.zc-pin text { font-size: 12px; font-weight: 800; fill: #15803D; paint-order: stroke; stroke: #FBF8FF; stroke-width: 4px; }
+.zc-pair { display: flex; flex-direction: column; gap: 2px; }
+.zc-pair .zc-top { max-height: max(150px, calc((var(--avail, 720px) - 150px) * .56)); }
+.zc-pair .zc-bot { max-height: max(110px, calc((var(--avail, 720px) - 150px) * .41)); }
+.pl-plot.zc-slope { stroke: #DB2777; stroke-width: 4; }
+.zc-sdot circle { fill: #DB2777; stroke: #fff; stroke-width: 2.5; }
+
+/* ==========================================================================
+   Math for AI · Finding the lowest point (Inky the octopus)
+   ========================================================================== */
+.plane.lake .pl-bg { fill: #ECFEFF; }
+.plane.lake .pl-grid line { stroke: rgba(14, 116, 144, .08); }
+.plane.lake .pl-grid line.axis { stroke: rgba(21, 94, 117, .4); }
+.plane.lake .pl-tick { fill: #0E7490; }
+.plane.lake .pl-dlabel { stroke: #ECFEFF; }
+.gd-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.gd-plot { padding: 4px; border-radius: 16px; background: #ECFEFF; border: 1.5px solid #A5F3FC; min-width: 0; overflow: hidden; }
+.gd-svg { max-height: max(240px, calc(var(--avail, 720px) - 130px)); }
+.gd-water { fill: #A5E9F2; opacity: .55; }
+.gd-sand { fill: #E7D3A8; stroke: #C9A96A; stroke-width: 2.5; }
+.gd-weed { fill: none; stroke: #4D7C0F; stroke-width: 3; stroke-linecap: round; opacity: .7; }
+.gd-pearl .p { fill: #fff; stroke: #94A3B8; stroke-width: 1.5; }
+.gd-pearl .shine { fill: #E0F2FE; }
+.gd-inky .pl-emoji { font-size: 26px; }
+.gd-murk { fill: #082F3A; opacity: .94; transition: opacity .9s; pointer-events: none; }
+.gd-murk.gone { opacity: 0; }
+.gd-read, .gd-slope, .gd-calc { padding: 10px 14px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--ink-2); text-align: center; }
+.gd-read b, .gd-calc b { color: var(--lc-dark); }
+.gd-slope { font-size: 18px; }
+.gd-slope b { font-size: 26px; color: var(--lc-dark); }
+.gd-m { color: #C2410C; font-weight: 800; }
+.gd-prints circle { fill: #0E7490; opacity: .45; }
+.pl-arrow.gd-hop { --ac: #0E7490; }
+.pl-arrow.gd-hop.bad { --ac: #DC2626; }
+.gd-log { display: flex; flex-direction: column; gap: 4px; max-height: max(90px, calc(var(--avail, 720px) - 420px)); overflow-y: auto; }
+.gd-logrow { padding: 5px 10px; border-radius: 10px; background: var(--surface-2); font-size: 13.5px; animation: fbIn .35s both; }
+.gd-trail { fill: none; stroke: #0E7490; stroke-width: 3; stroke-dasharray: 2 5; stroke-linecap: round; }
+.gd-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.gd-half { max-height: max(200px, calc(var(--avail, 720px) - 290px)); }
+.gd-gaps line { stroke: #DC2626; stroke-width: 2.5; }
+.pl-plot.gd-fit { stroke: #0E7490; stroke-width: 4.5; }
+.gd-data circle { fill: #F59E0B; stroke: #fff; stroke-width: 2; }
+.pl-plot.gd-bowl { stroke: #155E75; stroke-width: 4; }
+.gd-ctrl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 14px; align-items: start; margin-top: 12px; }
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 /* Wide screens: reading column on the left, the interactive part on the right,
@@ -4559,6 +4767,7 @@ b.zero, span.zero { color: var(--muted); }
   .dp-layout { grid-template-columns: minmax(0, 1fr); }
   .cs-layout { grid-template-columns: minmax(0, 1fr); }
   .fm-layout, .rg-layout, .rp-layout, .gw-layout { grid-template-columns: minmax(0, 1fr); }
+  .sl-layout, .rc-layout, .zc-layout, .gd-layout, .gd-ctrl { grid-template-columns: minmax(0, 1fr); }
   .fm-nums { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .rg-minis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rg-stories { grid-template-columns: minmax(0, 1fr); }
