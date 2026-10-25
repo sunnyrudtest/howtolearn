@@ -1,5 +1,7 @@
 # HowToLearn — visual, interactive learning
 
+**▶ Try it: https://sunnyrudtest.github.io/howtolearn/**
+
 A Brilliant-style learning site: bite-sized steps, live visuals, predictions and instant feedback.
 No build step and no dependencies — plain HTML, CSS and JavaScript.
 
