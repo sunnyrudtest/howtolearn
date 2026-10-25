@@ -105,6 +105,9 @@ A good world:
 | Rate of change, speed, average speed | Zip the toy race car: a self-drawing distance graph, speedometer, snail/dog/cheetah, "not a picture of the road" |
 | Slope at a point, tangent, derivative | Loopy Land roller coaster: magnifying-glass zoom, sliding Q onto P, a touching ruler, the slope graph |
 | Gradient descent, learning rate, local minimum | Inky the octopus in Murky Lake: feel the slope in the dark, Goldilocks step sizes, two dips, riding the miss bowl |
+| Weighted sums, bias, a neuron | Judge Hoot the owl's talent show: scorecards, weight knobs, his mood as a bias, the golden buzzer |
+| Matrix × vector / matrix, shapes, a layer | Professor Cog's robot factory: robots are stat columns, jobs are weight rows, a factory score table |
+| 2×2 matrices as transformations | Whiskers the cat in the funhouse mirrors: stretch, flip, spin, lean, squash flat |
 
 Math lessons use `PL.plane({x, y, unit, cls, onTap, hover})` (in `widgets.js`) for every coordinate grid: it gives
 `arrow(a, b, {color, label})`, `dot(p, {emoji|node})`, `glide(a, b, ms, fn)` and `toUnit(event)`. Write vectors as

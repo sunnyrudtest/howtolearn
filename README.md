@@ -6,7 +6,7 @@ A Brilliant-style learning site: bite-sized steps, live visuals, predictions and
 No build step and no dependencies — plain HTML, CSS and JavaScript.
 
 The first course is **Python Programming** (12 chapters, 50 lessons; all live).
-The second is **Math for AI** (6 chapters, 22 lessons planned; chapters 1–4, lessons 1–14, are live). Its lessons share the
+The second is **Math for AI** (6 chapters, 22 lessons planned; chapters 1–5, lessons 1–17, are live). Its lessons share the
 `PL.plane` coordinate-grid widget in `js/widgets.js` and live in `js/lessons/m*.js`.
 Machine Learning, Neural Networks, Generative AI and How Computers Work are shown as coming soon.
 See [CURRICULUM.md](CURRICULUM.md) for the full plan.

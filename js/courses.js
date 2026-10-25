@@ -350,6 +350,21 @@
       <path d="M6 14 C16 54 48 54 58 14 V56 H6z" fill="#E7D3A8"/>
       <path d="M12 22 L20 34 M22 38 L28 44" stroke="#0E7490" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 4"/>
       <circle cx="32" cy="44" r="4" fill="#fff" stroke="#94A3B8" stroke-width="1.5"/><circle cx="14" cy="18" r="6" fill="#C026D3"/><circle cx="12" cy="17" r="1.4" fill="#fff"/><circle cx="16" cy="17" r="1.4" fill="#fff"/></svg>`,
+    weighted: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#DCFCE7"/>
+      <path d="M8 8 H20 Q16 30 20 50 L8 56z M56 8 H44 Q48 30 44 50 L56 56z" fill="#DC2626"/>
+      <circle cx="32" cy="28" r="11" fill="#A16207"/><circle cx="28" cy="26" r="3.5" fill="#fff"/><circle cx="36" cy="26" r="3.5" fill="#fff"/><circle cx="28" cy="26" r="1.6"/><circle cx="36" cy="26" r="1.6"/><path d="M30 31 l2 3 2 -3z" fill="#F59E0B"/>
+      <rect x="20" y="42" width="24" height="12" rx="3" fill="#166534"/><text x="32" y="51.5" font-size="9" font-weight="800" fill="#fff" text-anchor="middle" font-family="sans-serif">×2</text></svg>`,
+    matrix: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#FEF9C3"/>
+      <path d="M14 12 H9 V52 H14 M40 12 H45 V52 H40" stroke="#854D0E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      ${[20, 32, 44].map((y, r) => [17, 27, 37].map((x, c) => `<rect x="${x - 4}" y="${y - 4}" width="8" height="8" rx="2" fill="${r === 1 ? '#EAB308' : '#FDE68A'}"/>`).join('')).join('')}
+      <rect x="49" y="16" width="9" height="32" rx="3" fill="#0EA5E9"/></svg>`,
+    transform: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#FCE7F3"/>
+      <path d="M10 46 L22 18 L50 22 L38 50z" fill="#fff" stroke="#BE185D" stroke-width="2"/>
+      <path d="M18 40 L32 33" stroke="#DC2626" stroke-width="3.5" stroke-linecap="round"/><path d="M18 40 L25 25" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M33 28 l3 -6 3 6z M43 28 l3 -6 3 6z" fill="#9D174D"/></svg>`,
     thinking: `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="27" cy="27" r="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="5"/><path d="M39 39 L54 54" stroke="#0284C7" stroke-width="7" stroke-linecap="round"/><ellipse cx="27" cy="29" rx="5" ry="6.5" fill="#0F172A"/><path d="M22 24 l-4 -3 M32 24 l4 -3 M21 30 h-5 M33 30 h5 M22 35 l-4 3 M32 35 l4 3" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/></svg>`,
     recursion: `<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="12" fill="#CCFBF1"/><rect x="14" y="14" width="36" height="36" rx="9" fill="#5EEAD4"/><rect x="21" y="21" width="22" height="22" rx="6" fill="#14B8A6"/><rect x="27" y="27" width="10" height="10" rx="3" fill="#0F766E"/></svg>`,
     organizing: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 20 V14 h16 v6" stroke="#475569" stroke-width="4" fill="none" stroke-linejoin="round"/><rect x="8" y="20" width="48" height="32" rx="7" fill="#64748B"/><rect x="8" y="30" width="48" height="5" fill="#475569"/><rect x="27" y="27" width="10" height="11" rx="2" fill="#FBBF24"/></svg>`,
@@ -841,9 +856,21 @@
           num: 5, title: 'Weighted Sums & Matrices', art: 'matrices',
           tagline: 'Many numbers mixed at once: what every layer of a neural network does.',
           lessons: [
-            soon('Weighted sums', 'Talent-show judges who care about different things'),
-            soon('Matrices: many sums at once', 'A robot factory scoreboard'),
-            soon('Matrices move space', 'A funhouse mirror for pictures'),
+            live('weighted', 'm15-weighted.js', {
+              title: 'Weighted sums', tagline: 'Judge Hoot the owl scores a forest talent show',
+              topics: ['Rating × weight', 'Weights pick the winner', 'Bias: a thumb on the scale', 'A neuron'],
+              color: '#15803D', soft: '#DCFCE7', dark: '#166534', minutes: 9, steps: 6,
+            }),
+            live('matrix', 'm16-matrix.js', {
+              title: 'Matrices: many sums at once', tagline: 'Professor Cog\'s robot factory',
+              topics: ['Rows of weights', 'Matrix × vector', 'Shapes must match', 'A layer of neurons'],
+              color: '#A16207', soft: '#FEF9C3', dark: '#854D0E', minutes: 10, steps: 6,
+            }),
+            live('transform', 'm17-transform.js', {
+              title: 'Matrices move space', tagline: 'Whiskers the cat in the funhouse mirrors',
+              topics: ['Stretch and flip', 'Columns = where arrows land', 'Spins and leans', 'Squashed flat'],
+              color: '#BE185D', soft: '#FCE7F3', dark: '#9D174D', minutes: 10, steps: 6,
+            }),
           ],
         },
         {

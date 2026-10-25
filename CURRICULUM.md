@@ -148,13 +148,13 @@ idea shows up in AI.
 | 13 | Zoom into a curve | Loopy Land roller coaster: a different slope at every point, zoom in with a magnifying glass until the track is straight, slide Q onto P (the tangent line / derivative), find the flat top and bottom with a touching ruler, the slopes draw their own graph | ✅ |
 | 14 | Finding the lowest point | Inky the octopus in Murky Lake: find the lost pearl in the dark, step opposite to the slope, new spot = spot − slope (gradient descent), Goldilocks step sizes (learning rate), stuck in the small dip (local minimum), riding the miss bowl to fit a line (how AI learns) | ✅ |
 
-### Chapter 5 · Weighted Sums & Matrices — lessons 15–17 ⬜
+### Chapter 5 · Weighted Sums & Matrices — lessons 15–17 ✅
 
-| # | Lesson | World |
-|---|---|---|
-| 15 | Weighted sums | Talent-show judges who care about different things (→ a neuron) |
-| 16 | Matrices: many sums at once | A robot factory scoring every robot with every judge in one table (→ a layer) |
-| 17 | Matrices move space | A funhouse mirror that stretches, flips and turns a picture |
+| # | Lesson | World | Status |
+|---|---|---|---|
+| 15 | Weighted sums | Judge Hoot the owl's forest talent show: a scorecard of rating × weight, turn the knobs so each act wins, a weight of 0 ignores Polly the parrot's perfect 10, his mood is a bias (golden tickets), the golden buzzer is a neuron | ✅ |
+| 16 | Matrices: many sums at once | Professor Cog's robot factory: score Zippy for three jobs, stack the jobs into a matrix (row meets column), shapes must match, the whole factory at once (matrix × matrix), a bias and buzzer on every row is a layer of neurons | ✅ |
+| 17 | Matrices move space | Whiskers the cat in the carnival funhouse: mirrors are 2×2 matrices, follow the ear tip (weighted sums of x and y), columns are where → and ↑ land, a half-turn spin isn't the upside-down mirror (watch the bow), squashed flat can't be undone | ✅ |
 
 ### Chapter 6 · Chance & Data — lessons 18–22 ⬜
 
