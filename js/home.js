@@ -78,6 +78,22 @@
     return el;
   }
 
+  /* ---------- Search box: jump straight to any topic ---------- */
+  function heroSearch() {
+    const input = h('input', {
+      type: 'search', class: 'hs-input', placeholder: 'Or search any topic: loops, vectors, gradient descent…',
+      autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', enterkeyhint: 'search', maxlength: '120', 'aria-label': 'Search lessons',
+      onFocus: () => PL.searchPage.prefetch(),
+    });
+    const go = (q) => { location.hash = PL.searchPage.href(q.trim()); };
+    return h('div', { class: 'hero-search' },
+      h('form', { class: 'hs-box', role: 'search', onSubmit: (e) => { e.preventDefault(); go(input.value); } },
+        h('span', { class: 'hs-ico', html: PL.ui.searchIcon }), input,
+        h('button', { type: 'submit', class: 'hs-go', 'aria-label': 'Search', html: icons.next })),
+      h('div', { class: 'hs-pop' }, h('span', null, 'Try:'),
+        ['Recursion', 'Dictionaries', 'Gradient descent', 'Probability'].map((t) => h('a', { href: PL.searchPage.href(t) }, t))));
+  }
+
   /* ---------- Course tiles ---------- */
   function liveTile(course) {
     const st = PL.ui.courseStats(course.id);
@@ -127,6 +143,7 @@
           h('div', { class: 'hero-cta' },
             PL.btn(ctaLabel, { variant: 'primary big', icon: icons.play, onClick: () => { location.hash = st.started ? '#/lesson/' + resume.id : '#/course/python'; } }),
             PL.btn('Browse courses', { variant: 'big', onClick: () => document.getElementById('courses').scrollIntoView({ behavior: 'smooth' }) })),
+          heroSearch(),
           h('div', { class: 'hero-meta' },
             ...['No experience needed', `${st.live.length} interactive lessons ready`, 'Works on your phone'].map((t) => h('span', { html: icons.check + PL.esc(t) })))),
         heroVisual(cleanups));
