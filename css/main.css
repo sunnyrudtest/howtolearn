@@ -4713,6 +4713,195 @@ b.zero, span.zero { color: var(--muted); }
 .tf-meter b { font-family: var(--mono); font-size: 17px; color: var(--ink); text-align: right; }
 
 /* ==========================================================================
+   Math for AI · What is chance? (Goblin Gus's chests)
+   ========================================================================== */
+.ch-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 18px; align-items: start; }
+.ch-shop { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.ch-chest { width: min(100%, clamp(150px, calc(var(--avail, 720px) - 420px), 260px)); height: auto; overflow: visible; }
+.ch-chest .wood { fill: #B45309; stroke: #78350F; stroke-width: 3; }
+.ch-chest .band { fill: #FBBF24; }
+.ch-chest .lock { fill: #FDE68A; stroke: #92400E; stroke-width: 2; }
+.ch-chest .shadow { fill: rgba(0, 0, 0, .12); }
+.ch-lid { transform-box: fill-box; transform-origin: 0% 100%; }
+.ch-item { font-size: 34px; opacity: 0; }
+.ch-chest.open .ch-lid { animation: chLid .7s ease; }
+.ch-chest.open .ch-item { animation: chPop .7s ease forwards; }
+@keyframes chLid { 30%, 70% { transform: rotate(-28deg); } }
+@keyframes chPop { 0% { opacity: 0; transform: translateY(20px); } 50%, 100% { opacity: 1; transform: translateY(-14px); } }
+.ch-tallies { display: flex; flex-direction: column; gap: 10px; }
+.ch-tally { display: grid; grid-template-columns: 120px minmax(0, 1fr) 36px; gap: 8px; align-items: center; font-weight: 700; }
+.ch-track { height: 20px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid var(--line); overflow: hidden; }
+.ch-track i { display: block; height: 100%; background: var(--lc); transition: width .25s; }
+.ch-tally b { font-family: var(--mono); font-size: 17px; text-align: right; }
+.ch-bag { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 6px; align-self: stretch; }
+.ch-bag span { aspect-ratio: 1; display: grid; place-items: center; font-size: 22px; border-radius: 10px; background: #FFFBEB; border: 1.5px solid #FDE68A; }
+.ch-linecard { padding: 10px; margin-bottom: 12px; }
+.ch-line { display: block; width: 100%; height: auto; max-height: 150px; }
+.ch-line .bar { fill: #FDE68A; }
+.ch-line .tk { stroke: #92400E; stroke-width: 2; }
+.ch-line .tv { font-family: var(--mono); font-size: 13px; font-weight: 800; fill: #92400E; }
+.ch-line .tl { font-size: 11px; font-weight: 700; fill: var(--muted); }
+.ch-mark text { font-size: 20px; }
+.ch-mark .stem { stroke: #92400E; stroke-width: 1.5; stroke-dasharray: 3 3; }
+.ch-ev { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 12px; background: #fff; border: 1.5px solid var(--line); font-weight: 700; font-size: 14px; }
+.ch-opts { display: flex; gap: 4px; }
+.ch-opt { min-width: 42px; min-height: 40px; border-radius: 10px; border: 2px solid var(--line-2); background: #fff; font-family: var(--mono); font-weight: 800; cursor: pointer; }
+.ch-opt:hover:not(:disabled) { border-color: var(--lc); }
+.ch-opt.right { background: #DCFCE7; border-color: #16A34A; color: #166534; }
+.ch-opt.wrong { background: var(--bad-soft); border-color: #FCA5A5; color: var(--bad-ink); }
+.ch-step { display: grid; grid-template-columns: 36px auto minmax(0, 1fr); gap: 10px; align-items: center; padding: 8px 12px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); }
+.ch-se { font-size: 24px; }
+.ch-step .row b { min-width: 24px; text-align: center; font-family: var(--mono); font-size: 20px; }
+.ch-frac { font-family: var(--mono); font-size: 14px; color: var(--muted); text-align: right; }
+.ch-frac b { font-size: 18px; color: var(--lc-dark); }
+.ch-streak { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.ch-row5 { display: flex; gap: 6px; font-size: 32px; }
+.ch-q { font-size: 40px; font-weight: 900; color: var(--lc); }
+.ch-graph { display: block; width: 100%; height: auto; max-height: max(200px, calc(var(--avail, 720px) - 200px)); }
+.ch-graph .ax { stroke: #94A3B8; stroke-width: 2; }
+.ch-graph .tv { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+.ch-graph .tl { font-size: 11px; font-weight: 700; fill: var(--muted); }
+.ch-graph .truth { stroke: #16A34A; stroke-width: 2; stroke-dasharray: 6 5; }
+.ch-run { fill: none; stroke: var(--lc); stroke-width: 3; stroke-linejoin: round; }
+.ch-read { padding: 10px 14px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); font-family: var(--mono); font-size: 17px; text-align: center; }
+.ch-read b { color: var(--lc-dark); font-size: 20px; }
+
+/* ==========================================================================
+   Math for AI · Combining chances (Sir Squeak's dungeon)
+   ========================================================================== */
+.cb-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.cb-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.cb-col { display: flex; flex-direction: column; gap: 6px; }
+.cb-ct { font-weight: 800; font-size: 14px; }
+.cb-ct b { font-family: var(--mono); color: var(--lc-dark); }
+.cb-mice { display: flex; flex-wrap: wrap; gap: 1px; align-content: flex-start; min-height: 120px; max-height: max(120px, calc(var(--avail, 720px) - 380px)); overflow: hidden; padding: 6px; border-radius: 12px; background: var(--surface-2); font-size: 15px; }
+.cb-grid { display: grid; grid-template-columns: auto repeat(2, minmax(0, 1fr)); gap: 8px; align-items: center; }
+.cb-ch { font-size: 13px; text-align: center; }
+.cb-rh { font-size: 13px; white-space: nowrap; }
+.cb-world { min-height: 58px; border-radius: 14px; border: 2px solid var(--line-2); background: #fff; font-size: 18px; cursor: pointer; transition: background .2s, border-color .2s; }
+.cb-world:hover { border-color: var(--lc); }
+.cb-world.pick { background: #DCFCE7; border-color: #16A34A; }
+.cb-world.pick.bad { background: #FEE2E2; border-color: #EF4444; }
+.cb-world.wrong { animation: vcBonk .4s ease; border-color: #FCA5A5; }
+.cb-traps { display: flex; flex-wrap: wrap; gap: 4px; font-size: 26px; min-height: 36px; }
+.cb-meter { display: grid; grid-template-columns: auto minmax(0, 1fr) 48px; gap: 8px; align-items: center; font-size: 13px; font-weight: 700; color: var(--muted); }
+.cb-track { position: relative; height: 20px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid var(--line); overflow: hidden; }
+.cb-track .half { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--ink-2); z-index: 1; }
+.cb-track i { display: block; height: 100%; background: #22C55E; transition: width .25s; }
+.cb-track i.low { background: #EF4444; }
+.cb-meter b { font-family: var(--mono); font-size: 17px; color: var(--ink); text-align: right; }
+.cb-calc { font-family: var(--mono); font-size: 15px; color: var(--ink-2); text-align: center; }
+.cb-route { display: flex; flex-direction: column; gap: 6px; }
+.cb-route small { color: var(--muted); font-weight: 700; }
+
+/* ==========================================================================
+   Math for AI · Average & spread (the archery tournament)
+   ========================================================================== */
+.sp-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.sp-tcard { display: flex; justify-content: center; }
+.sp-target { width: min(100%, max(220px, calc(var(--avail, 720px) - 160px))); height: auto; }
+.sp-target .r5 { fill: #fff; stroke: #CBD5E1; stroke-width: 1.5; }
+.sp-target .r4 { fill: #1E293B; }
+.sp-target .r3 { fill: #2563EB; }
+.sp-target .r2 { fill: #DC2626; }
+.sp-target .r1 { fill: #FACC15; }
+.sp-arrow line { stroke: #78350F; stroke-width: 2.5; }
+.sp-arrow circle { stroke: #fff; stroke-width: 2; }
+.sp-arrow.fox circle { fill: #F97316; }
+.sp-arrow.bear circle { fill: #8B5CF6; }
+.sp-avg path { stroke-width: 4.5; stroke-linecap: round; }
+.sp-avg.fox path { stroke: #F97316; }
+.sp-avg.bear path { stroke: #A855F7; }
+.sp-avg path.o { stroke: #fff; stroke-width: 9; }
+.sp-seesaw { display: block; width: 100%; height: auto; max-height: max(170px, calc(var(--avail, 720px) - 260px)); }
+.sp-seesaw .ground { fill: #D1FAE5; }
+.sp-plank { transition: transform .3s; }
+.sp-plank .board { fill: #92400E; }
+.sp-plank .tv { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+.sp-plank .ball { fill: #F97316; stroke: #fff; stroke-width: 2; }
+.sp-plank .bt { font-family: var(--mono); font-size: 11px; font-weight: 800; fill: #fff; }
+.sp-piv { fill: #047857; }
+.sp-read { padding: 10px 14px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); font-size: 16px; text-align: center; }
+.sp-row { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 14px; align-items: center; }
+.sp-dcard { padding: 6px 10px; }
+.sp-dots { display: block; width: 100%; height: auto; }
+.sp-dots .ax { stroke: #94A3B8; stroke-width: 2; }
+.sp-dots .mid { stroke: #047857; stroke-width: 2; stroke-dasharray: 4 4; }
+.sp-dots .tv { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+.sp-dots .dot { stroke: #fff; stroke-width: 2; }
+.sp-dots .dot.fox { fill: #F97316; }
+.sp-dots .dot.bear { fill: #8B5CF6; }
+.sp-band { fill: rgba(16, 185, 129, .2); stroke: #10B981; stroke-width: 2; transition: all .2s; }
+.sp-band.miss { fill: rgba(239, 68, 68, .12); stroke: #EF4444; }
+.sp-hist { display: block; width: 100%; height: auto; max-height: max(200px, calc(var(--avail, 720px) - 200px)); }
+.sp-bin { fill: #34D399; transition: y .2s, height .2s; }
+.sp-hist .ax { stroke: #94A3B8; stroke-width: 2; }
+.sp-hist .tv { font-size: 11px; font-weight: 700; fill: var(--muted); }
+.sp-bell { fill: none; stroke: #065F46; stroke-width: 3; stroke-dasharray: 6 5; }
+.sp-plot { padding: 4px; border-radius: 16px; background: #FBFFF4; border: 1.5px solid #A7F3D0; min-width: 0; }
+.sp-svg { max-height: max(200px, calc(var(--avail, 720px) - 200px)); }
+.pl-plot.sp-goal { stroke: #065F46; stroke-width: 3; stroke-dasharray: 7 6; }
+.pl-plot.sp-cur { stroke: #F97316; stroke-width: 4.5; }
+
+/* ==========================================================================
+   Math for AI · Updating beliefs (the haunted castle)
+   ========================================================================== */
+.by-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.by-castle { display: flex; gap: 14px; align-items: center; }
+.by-big { font-size: 64px; }
+.by-facts { display: flex; flex-direction: column; gap: 6px; font-size: 14.5px; }
+.by-polls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.by-poll { min-height: 52px; border-radius: 14px; border: 2px solid var(--line-2); background: #fff; font: inherit; font-weight: 800; font-size: 16px; cursor: pointer; }
+.by-poll:hover:not(:disabled) { border-color: var(--lc); }
+.by-poll.on { background: var(--lc-soft); border-color: var(--lc); color: var(--lc-dark); }
+.by-grid { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px; width: min(100%, max(240px, calc(var(--avail, 720px) - 230px))); margin: 0 auto; }
+.by-n { aspect-ratio: 1; display: grid; place-items: center; border-radius: 6px; font-size: clamp(11px, 1.6vw, 17px); background: #F1F5F9; transition: opacity .3s, transform .3s; }
+.by-n.g { background: #EDE9FE; }
+.by-n.off { opacity: .12; transform: scale(.8); }
+.by-grid.f .by-n:not(.off) { box-shadow: inset 0 0 0 2px #FBBF24; background: #FFFBEB; }
+.by-grid.f .by-n.g:not(.off) { box-shadow: inset 0 0 0 2px #7C3AED; background: #EDE9FE; }
+.by-meter { display: grid; grid-template-columns: auto minmax(0, 1fr) 48px; gap: 8px; align-items: center; font-size: 13px; font-weight: 700; color: var(--muted); }
+.by-track { height: 20px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid var(--line); overflow: hidden; }
+.by-track i { display: block; height: 100%; background: linear-gradient(90deg, #A78BFA, #6D28D9); transition: width .3s; }
+.by-meter b { font-family: var(--mono); font-size: 18px; color: var(--ink); text-align: right; }
+.by-clue, .by-word { min-height: 44px; padding: 6px 14px; border-radius: 999px; border: 2px solid var(--line-2); background: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.by-clue.on, .by-word.on { background: var(--lc); border-color: var(--lc); color: #fff; }
+.by-word small { font-family: var(--mono); opacity: .7; }
+.by-words { display: flex; flex-wrap: wrap; gap: 8px; }
+.by-letter { padding: 14px 16px; border-radius: 6px; background: #FFFBEB; border: 1.5px solid #FDE68A; font-family: Georgia, serif; font-size: 16px; min-height: 60px; }
+.by-calc { font-family: var(--mono); font-size: 14px; color: var(--ink-2); padding: 8px 12px; border-radius: 12px; background: var(--surface-2); }
+.by-calc b { color: var(--lc-dark); }
+
+/* ==========================================================================
+   Math for AI · Next-word dice (Tale-o-Tron)
+   ========================================================================== */
+.nw-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 18px; align-items: start; }
+.nw-wcard { display: flex; justify-content: center; }
+.nw-wheel { width: min(100%, max(200px, calc(var(--avail, 720px) - 200px))); height: auto; }
+.nw-wheel .slice { stroke: #fff; stroke-width: 2; }
+.nw-wheel .sl { font-size: 13px; font-weight: 800; fill: #fff; }
+.nw-wheel .hub { fill: #fff; stroke: #1E293B; stroke-width: 3; }
+.nw-wheel .ptr { fill: #1E293B; }
+.nw-story { padding: 14px 16px; border-radius: 14px; background: #fff; border: 1.5px solid var(--line); font-family: Georgia, serif; font-size: 20px; }
+.nw-story b { color: var(--lc-dark); }
+.nw-story .blank { color: var(--muted); }
+.nw-bars { display: flex; flex-direction: column; gap: 6px; }
+.nw-bar { display: grid; grid-template-columns: 110px minmax(0, 1fr) 46px; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 10px; background: #fff; border: 1.5px solid var(--line); font: inherit; font-weight: 700; text-align: left; }
+button.nw-bar { cursor: pointer; min-height: 40px; }
+button.nw-bar:hover { border-color: var(--lc); }
+.nw-bar .track { height: 14px; border-radius: 7px; background: var(--surface-2); overflow: hidden; }
+.nw-bar .track i { display: block; height: 100%; transition: width .25s; }
+.nw-bar b { font-family: var(--mono); text-align: right; }
+.nw-tally, .nw-outs { display: flex; flex-wrap: wrap; gap: 6px; }
+.nw-tally span, .nw-outs span { padding: 4px 10px; border-radius: 999px; background: var(--lc-soft); color: var(--lc-dark); font-weight: 700; font-size: 14px; }
+.nw-lib { display: flex; flex-direction: column; gap: 4px; font-family: Georgia, serif; font-size: 15px; }
+.nw-sent { padding: 4px 10px; border-radius: 8px; color: var(--muted); background: var(--surface-2); }
+.nw-sent.read { color: var(--ink); background: #fff; }
+.nw-sent mark { background: #FDE68A; border-radius: 4px; padding: 0 3px; font-weight: 800; }
+.nw-shelf { display: flex; flex-direction: column; gap: 6px; font-family: Georgia, serif; font-size: 15px; }
+.nw-shelf div { padding: 8px 12px; border-radius: 10px; background: #FFF1F2; }
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 /* Wide screens: reading column on the left, the interactive part on the right,
@@ -4963,6 +5152,8 @@ b.zero, span.zero { color: var(--muted); }
   .fm-layout, .rg-layout, .rp-layout, .gw-layout { grid-template-columns: minmax(0, 1fr); }
   .sl-layout, .rc-layout, .zc-layout, .gd-layout, .gd-ctrl { grid-template-columns: minmax(0, 1fr); }
   .ws-layout, .mx-layout, .tf-layout { grid-template-columns: minmax(0, 1fr); }
+  .ch-layout, .cb-layout, .sp-layout, .sp-row, .by-layout, .nw-layout { grid-template-columns: minmax(0, 1fr); }
+  .ch-ev { grid-template-columns: minmax(0, 1fr); }
   .fm-nums { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .rg-minis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rg-stories { grid-template-columns: minmax(0, 1fr); }

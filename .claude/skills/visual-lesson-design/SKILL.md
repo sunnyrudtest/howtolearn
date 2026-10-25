@@ -108,6 +108,11 @@ A good world:
 | Weighted sums, bias, a neuron | Judge Hoot the owl's talent show: scorecards, weight knobs, his mood as a bias, the golden buzzer |
 | Matrix × vector / matrix, shapes, a layer | Professor Cog's robot factory: robots are stat columns, jobs are weight rows, a factory score table |
 | 2×2 matrices as transformations | Whiskers the cat in the funhouse mirrors: stretch, flip, spin, lean, squash flat |
+| Probability, 0–1, law of large numbers | Goblin Gus's treasure chests: loot tokens, pack-your-own chest, the "it's due" myth |
+| AND / OR / complements | Sir Squeak the mouse knight's dungeon: fire and snake traps, a grid of equally likely worlds |
+| Mean, spread, bell curve | The Woodland Archery Tournament: Fox vs Bear, a seesaw balance point, Hattie's 300 arrows |
+| Bayes, base rates | Lady Mabel's haunted castle: creaks and chills over 100 nights, a junk-mail sorter |
+| Next-token sampling, temperature, softmax | Tale-o-Tron the story machine: a weighted word wheel, counting a library, a temperature dial |
 
 Math lessons use `PL.plane({x, y, unit, cls, onTap, hover})` (in `widgets.js`) for every coordinate grid: it gives
 `arrow(a, b, {color, label})`, `dot(p, {emoji|node})`, `glide(a, b, ms, fn)` and `toUnit(event)`. Write vectors as

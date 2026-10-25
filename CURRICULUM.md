@@ -156,15 +156,15 @@ idea shows up in AI.
 | 16 | Matrices: many sums at once | Professor Cog's robot factory: score Zippy for three jobs, stack the jobs into a matrix (row meets column), shapes must match, the whole factory at once (matrix × matrix), a bias and buzzer on every row is a layer of neurons | ✅ |
 | 17 | Matrices move space | Whiskers the cat in the carnival funhouse: mirrors are 2×2 matrices, follow the ear tip (weighted sums of x and y), columns are where → and ↑ land, a half-turn spin isn't the upside-down mirror (watch the bow), squashed flat can't be undone | ✅ |
 
-### Chapter 6 · Chance & Data — lessons 18–22 ⬜
+### Chapter 6 · Chance & Data — lessons 18–22 ✅
 
-| # | Lesson | World |
-|---|---|---|
-| 18 | What is chance? | Treasure-chest loot drops: chance from 0 to 1, counting outcomes |
-| 19 | Combining chances | A dungeon with two traps: "and" multiplies, "or" adds (carefully) |
-| 20 | Average & spread | An archery tournament: same average, very different spread; the bell curve |
-| 21 | Updating beliefs | A haunted castle: is the creak a ghost or the wind? New evidence changes the odds |
-| 22 | Next-word dice | A story machine that rolls weighted dice for the next word (→ how chatbots write) |
+| # | Lesson | World | Status |
+|---|---|---|---|
+| 18 | What is chance? | Goblin Gus's treasure chests: open chests and tally loot, chance = tokens ÷ total, place events on a 0–1 line, pack your own chest, the "crown is due" myth (gambler's fallacy), the real chance appears after 1,000 openings | ✅ |
+| 19 | Combining chances | Sir Squeak the mouse knight's dungeon: send mice past fire and snake traps, a grid of 6 equally likely worlds (AND multiplies), OR double-counts the overlap (1 − neither), small risks pile up (0.9⁷ < ½), three small traps vs one big one | ✅ |
+| 20 | Average & spread | The Woodland Archery Tournament: steady Fox vs wobbly Bear, the average as a seesaw's balance point, same average with different spread, Hattie the hedgehog's 300 arrows make a bell curve, shape a bell with two dials | ✅ |
+| 21 | Updating beliefs | Lady Mabel's haunted castle: gut feeling about a creak, count the 27 creaky nights (only ⅓ ghosts), a second clue (a chill) lifts it to 80%, base rates (rare things stay rare), a Bayes junk-mail sorter | ✅ |
+| 22 | Next-word dice | Tale-o-Tron the story machine: spin a weighted wheel for the next word, learn chances by counting a library, write stories by dice, the temperature dial, scores squeezed into chances (softmax) — the whole chatbot recipe | ✅ |
 
 ## Future courses ⬜ (shown as "coming soon")
 

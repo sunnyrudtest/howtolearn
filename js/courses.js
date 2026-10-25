@@ -365,6 +365,22 @@
       <path d="M10 46 L22 18 L50 22 L38 50z" fill="#fff" stroke="#BE185D" stroke-width="2"/>
       <path d="M18 40 L32 33" stroke="#DC2626" stroke-width="3.5" stroke-linecap="round"/><path d="M18 40 L25 25" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round"/>
       <path d="M33 28 l3 -6 3 6z M43 28 l3 -6 3 6z" fill="#9D174D"/></svg>`,
+    combine: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#E0E7FF"/>
+      ${[0, 1].map((c) => [0, 1, 2].map((r) => `<rect x="${12 + c * 21}" y="${10 + r * 15}" width="18" height="12" rx="3" fill="${c === 0 && r < 2 ? '#22C55E' : '#C7D2FE'}"/>`).join('')).join('')}
+      <circle cx="52" cy="50" r="7" fill="#94A3B8"/><circle cx="48" cy="44" r="3" fill="#CBD5E1"/><circle cx="56" cy="44" r="3" fill="#CBD5E1"/><circle cx="52" cy="51" r="1.4" fill="#F472B6"/></svg>`,
+    spread: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#D1FAE5"/>
+      <path d="M8 52 C22 52 24 16 32 16 S42 52 56 52" stroke="#047857" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="32" cy="34" r="9" fill="#fff" stroke="#DC2626" stroke-width="3"/><circle cx="32" cy="34" r="3.5" fill="#DC2626"/></svg>`,
+    bayes: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#EDE9FE"/>
+      <path d="M12 56 V30 l8 -8 8 8 V56z M36 56 V24 l8 -10 8 10 V56z" fill="#7C3AED"/><rect x="40" y="34" width="8" height="10" rx="4" fill="#FDE047"/>
+      <path d="M18 40 q0 -10 8 -10 q8 0 8 10 v10 l-3 -3 -2.5 3 -2.5 -3 -2.5 3 -2.5 -3 -3 3z" fill="#fff" stroke="#5B21B6" stroke-width="1.5"/><circle cx="23" cy="38" r="1.6"/><circle cx="29" cy="38" r="1.6"/></svg>`,
+    nextword: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="12" fill="#FFE4E6"/>
+      <path d="M32 34 L32 10 A24 24 0 0 1 54 40 Z" fill="#BE123C"/><path d="M32 34 L54 40 A24 24 0 0 1 20 55 Z" fill="#F59E0B"/><path d="M32 34 L20 55 A24 24 0 0 1 32 10 Z" fill="#0EA5E9"/>
+      <path d="M27 4 H37 L32 13z" fill="#1E293B"/><circle cx="32" cy="34" r="4" fill="#fff"/></svg>`,
     thinking: `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="27" cy="27" r="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="5"/><path d="M39 39 L54 54" stroke="#0284C7" stroke-width="7" stroke-linecap="round"/><ellipse cx="27" cy="29" rx="5" ry="6.5" fill="#0F172A"/><path d="M22 24 l-4 -3 M32 24 l4 -3 M21 30 h-5 M33 30 h5 M22 35 l-4 3 M32 35 l4 3" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/></svg>`,
     recursion: `<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="12" fill="#CCFBF1"/><rect x="14" y="14" width="36" height="36" rx="9" fill="#5EEAD4"/><rect x="21" y="21" width="22" height="22" rx="6" fill="#14B8A6"/><rect x="27" y="27" width="10" height="10" rx="3" fill="#0F766E"/></svg>`,
     organizing: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 20 V14 h16 v6" stroke="#475569" stroke-width="4" fill="none" stroke-linejoin="round"/><rect x="8" y="20" width="48" height="32" rx="7" fill="#64748B"/><rect x="8" y="30" width="48" height="5" fill="#475569"/><rect x="27" y="27" width="10" height="11" rx="2" fill="#FBBF24"/></svg>`,
@@ -877,11 +893,31 @@
           num: 6, title: 'Chance & Data', art: 'chance',
           tagline: 'Measuring how sure we are: the language AI uses to make guesses.',
           lessons: [
-            soon('What is chance?', 'Loot drops from treasure chests'),
-            soon('Combining chances', 'Survive a dungeon with two traps'),
-            soon('Average & spread', 'An archery tournament'),
-            soon('Updating beliefs', 'Ghost or wind in the haunted castle?'),
-            soon('Next-word dice', 'A story machine that rolls for every word'),
+            live('chance', 'm18-chance.js', {
+              title: 'What is chance?', tagline: 'Goblin Gus\'s treasure chests',
+              topics: ['Chance from 0 to 1', 'Counting outcomes', 'No memory', 'Many tries'],
+              color: '#B45309', soft: '#FEF3C7', dark: '#92400E', minutes: 9, steps: 6,
+            }),
+            live('combine', 'm19-combine.js', {
+              title: 'Combining chances', tagline: 'Sir Squeak braves a dungeon with two traps',
+              topics: ['AND multiplies', 'OR: don\'t count twice', '1 − chance', 'Small risks pile up'],
+              color: '#4338CA', soft: '#E0E7FF', dark: '#3730A3', minutes: 9, steps: 6,
+            }),
+            live('spread', 'm20-spread.js', {
+              title: 'Average & spread', tagline: 'Fox and Bear at the archery tournament',
+              topics: ['The balance point', 'Spread', 'The bell curve', 'Two numbers for a bell'],
+              color: '#047857', soft: '#D1FAE5', dark: '#065F46', minutes: 10, steps: 6,
+            }),
+            live('bayes', 'm21-bayes.js', {
+              title: 'Updating beliefs', tagline: 'Ghost or wind in the haunted castle?',
+              topics: ['Count the clue', 'Stacking clues', 'Base rates', 'A spam filter'],
+              color: '#6D28D9', soft: '#EDE9FE', dark: '#5B21B6', minutes: 10, steps: 6,
+            }),
+            live('nextword', 'm22-nextword.js', {
+              title: 'Next-word dice', tagline: 'Tale-o-Tron, the story machine',
+              topics: ['Weighted wheels', 'Counting text', 'Temperature', 'Scores into chances'],
+              color: '#BE123C', soft: '#FFE4E6', dark: '#9F1239', minutes: 10, steps: 6,
+            }),
           ],
         },
       ],
