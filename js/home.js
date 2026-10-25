@@ -145,7 +145,7 @@
             PL.btn('Browse courses', { variant: 'big', onClick: () => document.getElementById('courses').scrollIntoView({ behavior: 'smooth' }) })),
           heroSearch(),
           h('div', { class: 'hero-meta' },
-            ...['No experience needed', `${st.live.length} interactive lessons ready`, 'Works on your phone'].map((t) => h('span', { html: icons.check + PL.esc(t) })))),
+            ...['No experience needed', `${PL.courses.filter((c) => c.status === 'live').reduce((n, c) => n + PL.liveLessons(c.id).length, 0)} interactive lessons ready`, 'Works on your phone'].map((t) => h('span', { html: icons.check + PL.esc(t) })))),
         heroVisual(cleanups));
 
       const courses = h('section', { class: 'wrap section', id: 'courses' },

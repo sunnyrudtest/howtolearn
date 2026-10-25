@@ -8,12 +8,17 @@
 (function () {
   'use strict';
   const pages = () => [PL.home, PL.coursePage, PL.searchPage];
+  let lastHash = '';
 
   function route() {
     const hash = location.hash || '#/';
     const lesson = hash.match(/^#\/lesson\/([\w-]+)(?:\/(\d+))?/);
     const course = hash.match(/^#\/course\/([\w-]+)(?:\/(\d+))?/);
     const search = /^#\/search(?:\?|$)/.test(hash);
+    // Remember the search a lesson was opened from, until the learner leaves lessons.
+    if (/^#\/search/.test(lastHash) && lesson) PL.returnTo = lastHash;
+    else if (!lesson) PL.returnTo = null;
+    lastHash = hash;
     if (lesson) {
       pages().forEach((p) => p.destroy());
       PL.player.open(lesson[1], lesson[2] ? +lesson[2] - 1 : null);
